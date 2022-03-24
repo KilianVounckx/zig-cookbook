@@ -39,5 +39,5 @@ This repository assumes you have basic knowledge of zig (at least skimmed throug
 - Because the zig standard library is not finalized, and will not be for a while (current focus is
   on the self hosted compiler), these samples are prone to change.
 
-- If anyone knows how to make markdown-auto-docs work with github actions, please let me know,
-  because at the moment, code is not embedded in the readme's.
+- If anyone knows how to automate markdown-auto-docs so I don't have to manually enter every
+  README file, let me know. An alternative is also welcome.
