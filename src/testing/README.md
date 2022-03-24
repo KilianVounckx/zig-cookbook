@@ -35,5 +35,10 @@ Whenever you want to test if some writer formatting works as expected, you can u
 
 You can test whether a function returned an error with the expectError function.
 
+## Approx
+
+Floating point numbers are almost never exact. Too do tests to compare floating point numbers, use
+expectApproxEqRel and expectApproxEqAbs.
+
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./fmt.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
