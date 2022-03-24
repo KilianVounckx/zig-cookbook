@@ -57,3 +57,6 @@ difference is more subtle. The comparison function does not just return a boolea
 returns an Order enum (from std.math). This enum has three fields: lt, gt and eq. They signal
 if the first item is less than, greater than, or equal to the second item respectively. If the key
 is found in the list, the corresponding index is returned. Otherwise, it returns null.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./binary_search.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
