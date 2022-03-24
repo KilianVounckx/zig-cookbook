@@ -12,3 +12,11 @@ the comparison function.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sorting.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## Context
+
+Almost all functions exported by std.sort take a context parameter. This can be of any type. Most
+of the time this will just be void and be unused. Sometimes however it can be useful to have some
+context. Say you have a 2D grid, and you want to sort a list of coordinates based on the distance
+to a given coordinate. You could hardcode this one coordinate in the comparison function, but this
+won't allow for having that coordinate be runtime known. For this a context can be used.
