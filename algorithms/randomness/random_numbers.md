@@ -1,3 +1,5 @@
+## Random Numbers
+
 Generate random values with the help of random number generators (rng). In zig, you have to be
 specific about which rng to use. There are however good defaults. Rng's in zig use a pattern
 for interfaces which is common in the standard library. It uses fat pointers behind the scenes. It
