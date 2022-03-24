@@ -14,6 +14,17 @@ the same tests will fail, or succeed. However, the messages on fail will be conf
 the order wrong.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./basics.zig) -->
+<!-- The below code snippet is automatically added from ./basics.zig -->
+```zig
+const std = @import("std");
+
+test "basics" {
+    try std.testing.expect(true);
+    try std.testing.expectEqual(@as(u32, 42), 42);
+    try std.testing.expectEqualSlices(u32, &.{ 1, 2, 3, 4 }, &.{ 1, 2, 3, 4 });
+    try std.testing.expectEqualSentinel(u32, 0, &.{ 1, 2, 3 }, &.{ 1, 2, 3 });
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Strings
@@ -22,6 +33,16 @@ There are three functions for testing string properties. These are expectEqualSt
 expectStringStartsWith, and expectStringEndsWith. Their names are pretty self explanatory.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./strings.zig) -->
+<!-- The below code snippet is automatically added from ./strings.zig -->
+```zig
+const std = @import("std");
+
+test "strings" {
+    try std.testing.expectEqualStrings("Hello", "Hello");
+    try std.testing.expectStringStartsWith("Hello", "Hel");
+    try std.testing.expectStringEndsWith("Hello", "llo");
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Fmt
@@ -29,6 +50,34 @@ expectStringStartsWith, and expectStringEndsWith. Their names are pretty self ex
 Whenever you want to test if some writer formatting works as expected, you can use expectFmt.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./fmt.zig) -->
+<!-- The below code snippet is automatically added from ./fmt.zig -->
+```zig
+const std = @import("std");
+
+test "fmt primitives" {
+    try std.testing.expectFmt("42", "{}", .{42});
+    try std.testing.expectFmt("Hello", "{s}", .{"Hello"});
+    try std.testing.expectFmt("{ 1, 2, 3 }", "{any}", .{[_]u32{ 1, 2, 3 }});
+}
+
+const Vec2 = struct {
+    x: u32,
+    y: u32,
+
+    pub fn format(
+        self: Vec2,
+        comptime _: []const u8,
+        _: std.fmt.FormatOptions,
+        writer: anytype,
+    ) !void {
+        try writer.print("Vec2({}, {})", .{ self.x, self.y });
+    }
+};
+
+test "fmt custom" {
+    try std.testing.expectFmt("Vec2(1, 2)", "{}", .{Vec2{ .x = 1, .y = 2 }});
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Error
@@ -41,6 +90,34 @@ Floating point numbers are almost never exact. To do tests to compare floating p
 expectApproxEqRel and expectApproxEqAbs.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./fmt.zig) -->
+<!-- The below code snippet is automatically added from ./fmt.zig -->
+```zig
+const std = @import("std");
+
+test "fmt primitives" {
+    try std.testing.expectFmt("42", "{}", .{42});
+    try std.testing.expectFmt("Hello", "{s}", .{"Hello"});
+    try std.testing.expectFmt("{ 1, 2, 3 }", "{any}", .{[_]u32{ 1, 2, 3 }});
+}
+
+const Vec2 = struct {
+    x: u32,
+    y: u32,
+
+    pub fn format(
+        self: Vec2,
+        comptime _: []const u8,
+        _: std.fmt.FormatOptions,
+        writer: anytype,
+    ) !void {
+        try writer.print("Vec2({}, {})", .{ self.x, self.y });
+    }
+};
+
+test "fmt custom" {
+    try std.testing.expectFmt("Vec2(1, 2)", "{}", .{Vec2{ .x = 1, .y = 2 }});
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## TmpDir
@@ -52,6 +129,29 @@ to remove the directory afterwards. This prevents cluttering the zig-cache with 
 and files.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./tmpdir.zig) -->
+<!-- The below code snippet is automatically added from ./tmpdir.zig -->
+```zig
+const std = @import("std");
+
+test "tmpDir" {
+    var dir = std.testing.tmpDir(.{});
+    defer dir.cleanup();
+
+    {
+        const file = try dir.dir.createFile("file.txt", .{});
+        defer file.close();
+        try file.writer().writeAll("Hello, World!");
+    }
+
+    {
+        const file = try dir.dir.openFile("file.txt", .{});
+        defer file.close();
+        var buffer: ["Hello, World!".len]u8 = undefined;
+        _ = try file.reader().readAll(&buffer);
+        try std.testing.expectEqualStrings("Hello, World!", &buffer);
+    }
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## RefAllDecls
@@ -73,4 +173,19 @@ for refAllDecls. All tests in this directory are referenced using it. Keep in mi
 inner structs are referenced.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./refalldecls.zig) -->
+<!-- The below code snippet is automatically added from ./refalldecls.zig -->
+```zig
+const std = @import("std");
+
+pub const basics = @import("basics.zig");
+pub const strings = @import("strings.zig");
+pub const fmt = @import("fmt.zig");
+pub const approx = @import("approx.zig");
+pub const err = @import("error.zig");
+pub const tmpdir = @import("tmpdir.zig");
+
+test {
+    std.testing.refAllDecls(@This());
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->

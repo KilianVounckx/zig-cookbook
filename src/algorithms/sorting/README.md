@@ -14,6 +14,19 @@ which always sorts the given slice using the insertion sort algorithm. Most of t
 will be slower, so just using sort is preferred.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sorting.zig) -->
+<!-- The below code snippet is automatically added from ./sorting.zig -->
+```zig
+const std = @import("std");
+
+test "sorting" {
+    var list = [_]u32{ 1, 5, 10, 3, 15 };
+    std.sort.sort(u32, &list, {}, comptime std.sort.asc(u32));
+    try std.testing.expectEqualSlices(u32, &.{ 1, 3, 5, 10, 15 }, &list);
+
+    std.sort.sort(u32, &list, {}, comptime std.sort.desc(u32));
+    try std.testing.expectEqualSlices(u32, &.{ 15, 10, 5, 3, 1 }, &list);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Is sorted
@@ -22,6 +35,19 @@ The isSorted function checks if a list is sorted. It takes the exact same parame
 functions.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sorting.zig) -->
+<!-- The below code snippet is automatically added from ./sorting.zig -->
+```zig
+const std = @import("std");
+
+test "sorting" {
+    var list = [_]u32{ 1, 5, 10, 3, 15 };
+    std.sort.sort(u32, &list, {}, comptime std.sort.asc(u32));
+    try std.testing.expectEqualSlices(u32, &.{ 1, 3, 5, 10, 15 }, &list);
+
+    std.sort.sort(u32, &list, {}, comptime std.sort.desc(u32));
+    try std.testing.expectEqualSlices(u32, &.{ 15, 10, 5, 3, 1 }, &list);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Context
@@ -38,6 +64,60 @@ functions asc and desc, you won't notice this however, since only if two variabl
 will their order be swapped.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./context.zig) -->
+<!-- The below code snippet is automatically added from ./context.zig -->
+```zig
+const std = @import("std");
+
+const Coord = struct {
+    const Self = @This();
+
+    x: i32,
+    y: i32,
+
+    pub fn distance(self: Self, other: Self) u32 {
+        return std.math.absCast(self.x - other.x) + std.math.absCast(self.y - other.y);
+    }
+
+    pub fn compare(context: Self, a: Self, b: Self) bool {
+        return context.distance(a) < context.distance(b);
+    }
+};
+
+test "context" {
+    var list = [_]Coord{
+        .{ .x = 1, .y = 2 },
+        .{ .x = -2, .y = 2 },
+        .{ .x = 3, .y = 4 },
+        .{ .x = -3, .y = -2 },
+        .{ .x = 4, .y = 4 },
+        .{ .x = -2, .y = 3 },
+    };
+    var context = Coord{ .x = 0, .y = 0 };
+
+    std.sort.sort(Coord, &list, context, comptime Coord.compare);
+
+    try std.testing.expectEqualSlices(Coord, &.{
+        .{ .x = 1, .y = 2 },
+        .{ .x = -2, .y = 2 },
+        .{ .x = -3, .y = -2 },
+        .{ .x = -2, .y = 3 },
+        .{ .x = 3, .y = 4 },
+        .{ .x = 4, .y = 4 },
+    }, &list);
+
+    context = .{ .x = 5, .y = 5 };
+    std.sort.sort(Coord, &list, context, comptime Coord.compare);
+
+    try std.testing.expectEqualSlices(Coord, &.{
+        .{ .x = 4, .y = 4 },
+        .{ .x = 3, .y = 4 },
+        .{ .x = 1, .y = 2 },
+        .{ .x = -2, .y = 3 },
+        .{ .x = -2, .y = 2 },
+        .{ .x = -3, .y = -2 },
+    }, &list);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## SortContext
@@ -54,6 +134,34 @@ Note: The context argument in these functions has nothing to do with the context
 other sorting functions.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sort_context.zig) -->
+<!-- The below code snippet is automatically added from ./sort_context.zig -->
+```zig
+const std = @import("std");
+
+test "sortContext" {
+    const Context = struct {
+        const Self = @This();
+
+        list: []u32,
+
+        pub fn swap(self: Self, i: usize, j: usize) void {
+            const tmp = self.list[i];
+            self.list[i] = self.list[j];
+            self.list[j] = tmp;
+        }
+
+        pub fn lessThan(self: Self, i: usize, j: usize) bool {
+            return self.list[i] < self.list[j];
+        }
+    };
+
+    var list = [_]u32{ 1, 5, 10, 3, 15 };
+    const context = Context{ .list = &list };
+    std.sort.sortContext(list.len, context);
+
+    try std.testing.expectEqualSlices(u32, &.{ 1, 3, 5, 10, 15 }, &list);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Binary Search
@@ -70,6 +178,32 @@ if the first item is less than, greater than, or equal to the second item respec
 is found in the list, the corresponding index is returned. Otherwise, it returns null.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./binary_search.zig) -->
+<!-- The below code snippet is automatically added from ./binary_search.zig -->
+```zig
+const std = @import("std");
+
+test "binary search" {
+    const list = [_]u32{ 5, 6, 7, 8, 9 };
+
+    const order = struct {
+        pub fn order(_: void, a: u32, b: u32) std.math.Order {
+            if (a < b) {
+                return .lt;
+            } else if (a > b) {
+                return .gt;
+            } else {
+                return .eq;
+            }
+        }
+    }.order;
+
+    var index = std.sort.binarySearch(u32, 7, &list, {}, order);
+    try std.testing.expectEqual(@as(?usize, 2), index);
+
+    index = std.sort.binarySearch(u32, 42, &list, {}, order);
+    try std.testing.expectEqual(@as(?usize, null), index);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Min and max
@@ -80,4 +214,28 @@ given slice respectively. ArgMin and argMax return the index corresponding to th
 largest item respectively. All four of these functions return null if the given slice is empty.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./min_max.zig) -->
+<!-- The below code snippet is automatically added from ./min_max.zig -->
+```zig
+const std = @import("std");
+
+test "min, max" {
+    const list = [_]u32{ 13, 11, 31, 4, 42, 6 };
+
+    const min = std.sort.min(u32, &list, {}, comptime std.sort.asc(u32));
+    try std.testing.expectEqual(@as(?u32, 4), min);
+
+    const max = std.sort.max(u32, &list, {}, comptime std.sort.asc(u32));
+    try std.testing.expectEqual(@as(?u32, 42), max);
+}
+
+test "argMin, argMax" {
+    const list = [_]u32{ 13, 11, 31, 4, 42, 6 };
+
+    const min = std.sort.argMin(u32, &list, {}, comptime std.sort.asc(u32));
+    try std.testing.expectEqual(@as(?usize, 3), min);
+
+    const max = std.sort.argMax(u32, &list, {}, comptime std.sort.asc(u32));
+    try std.testing.expectEqual(@as(?usize, 4), max);
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
