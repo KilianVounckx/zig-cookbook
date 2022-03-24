@@ -18,6 +18,7 @@ I felt this didn't add much value.
 
 - Algorithms
     - [Randomness](src/algorithms/randomness)
+    - [Sorting](src/algorithms/sorting)
 
 
 ### Notes
