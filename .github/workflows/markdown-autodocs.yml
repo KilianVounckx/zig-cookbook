@@ -1,8 +1,11 @@
 name: Markdown autodocs
-on: [push]
+on:
+  push:
+    branches: [ master ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Markdown autodocs
       uses: dineshsonachalam/markdown-autodocs@v1.0.3
