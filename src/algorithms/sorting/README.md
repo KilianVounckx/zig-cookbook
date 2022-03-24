@@ -44,3 +44,16 @@ other sorting functions.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sort_context.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## Binary Search
+
+The binarySearch function searches for an item in a sorted list. It runs in O(log(N)) time which
+is much faster than a linear search, especially for large lists. Technically, the list doesn't have
+to be ordered. The only thing that matters is all the elements before the one you are searching for
+should be smaller, and all the ones after it should be bigger. A sorted list always has this
+property. The binarySearch function takes most of the same parameters as the sort functions. There
+are two differences. The first is it takes a key. This is the item you are looking for. The second
+difference is more subtle. The comparison function does not just return a boolean anymore. It
+returns an Order enum (from std.math). This enum has three fields: lt, gt and eq. They signal
+if the first item is less than, greater than, or equal to the second item respectively. If the key
+is found in the list, the corresponding index is returned. Otherwise, it returns null.
