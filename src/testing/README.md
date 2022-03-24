@@ -53,3 +53,24 @@ and files.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./tmpdir.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## RefAllDecls
+
+The last function is a convenience function. Often in zig, a struct defines a bunch of other
+structs. The tests in these inner structs aren't run automatically, because of zig's lazy analysis.
+To run them their are two options. You could reference them in a test with something like
+```zig
+struct Foo {
+    test "someTest" {}
+}
+
+test {
+    _ = Foo;
+}
+```
+If you have to do this for every struct declaration however this gets tedious. This is the use case
+for refAllDecls. All tests in this directory are referenced using it. Keep in mind, only public
+inner structs are referenced.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./refalldecls.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
