@@ -9,3 +9,6 @@ function checks if a bool is true. ExpectEqual tests if two variables are the sa
 ExpectEqualSlices checks if two slices of a given type are the same, and expectEqualSentinel checks
 if two sentinel terminated slices are the same. This last function also checks that they have the
 correct sentinel.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./basics.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
