@@ -16,6 +16,14 @@ will be slower, so just using sort is preferred.
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sorting.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
+## Is sorted
+
+The isSorted function checks if a list is sorted. It takes the exact same parameters as the sort
+functions.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sorting.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+
 ## Context
 
 Almost all functions exported by std.sort take a context parameter. This can be of any type. Most
