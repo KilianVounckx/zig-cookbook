@@ -32,7 +32,10 @@ context. Say you have a 2D grid, and you want to sort a list of coordinates base
 to a given coordinate. You could hardcode this one coordinate in the comparison function, but this
 won't allow for having that coordinate be runtime known. For this a context can be used. An
 important note is that order is not necessarily preserved. If two coordinates are equally far from
-the context coordinate, their order could be swapped.
+the context coordinate, their order could be swapped. This is called unstable sorting. It has
+nothing to do with the context, and everything with the algorithm zig uses to sort. With the builtin
+functions asc and desc, you won't notice this however, since only if two variables are the same
+will their order be swapped.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./context.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
