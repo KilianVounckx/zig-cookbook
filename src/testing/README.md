@@ -42,3 +42,14 @@ expectApproxEqRel and expectApproxEqAbs.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./fmt.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## TmpDir
+
+When you have to test some file IO, you often don't want to permanently create a file. For this
+reason there are the TmpDir type and the tmpDir function. These create a temporary directory
+somewhere in the zig-cache directory. The caller should call cleanup, probably in a defer statement,
+to remove the directory afterwards. This prevents cluttering the zig-cache with new directories
+and files.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./tmpdir.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
