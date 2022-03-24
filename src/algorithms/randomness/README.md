@@ -9,7 +9,7 @@ is definitely worth reading the
 Integers are uniformly distributed over the range of the type. Floats are uniformly distributed from
 0 (included) to 1 (excluded). Bools have an equal change to be true or false.
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./random_basics.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./basics.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Random numbers in a range
@@ -23,7 +23,7 @@ inclusive upper bound.
 For floating point numbers, zig does not provide range functions. However, it is really easy to
 implement one yourself.
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./random_range.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./range.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Random distributions
@@ -34,5 +34,13 @@ and deviation, multiply by the standard deviation, then add the mean.
 Exponential distributions have default rate parameter of 1. To use a different rate parameter,
 divide by it. For other distributions, you have to provide your own implementation.
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./random_distributions.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./distributions.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+
+## Shuffle
+
+The last function in the Random interface is shuffle. This function takes a slice, and shuffles
+it in place to a random permutation.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./shuffle.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
