@@ -5,7 +5,7 @@ A collection of [zig](https://www.ziglang.org") samples that demonstrate how to 
 ## Contents
 
 1. Algorithms
-  1.2. [Randomness](src/algorithms/randomness)
+  1. [Randomness](src/algorithms/randomness)
 
 
 ### Notes
