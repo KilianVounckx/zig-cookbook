@@ -19,4 +19,6 @@ Almost all functions exported by std.sort take a context parameter. This can be 
 of the time this will just be void and be unused. Sometimes however it can be useful to have some
 context. Say you have a 2D grid, and you want to sort a list of coordinates based on the distance
 to a given coordinate. You could hardcode this one coordinate in the comparison function, but this
-won't allow for having that coordinate be runtime known. For this a context can be used.
+won't allow for having that coordinate be runtime known. For this a context can be used. An
+important note is that order is not necessarily preserved. If two coordinates are equally far from
+the context coordinate, their order could be swapped.
