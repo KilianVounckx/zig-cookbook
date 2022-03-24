@@ -30,3 +30,10 @@ Whenever you want to test if some writer formatting works as expected, you can u
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./fmt.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## Error
+
+You can test whether a function returned an error with the expectError function.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./fmt.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
