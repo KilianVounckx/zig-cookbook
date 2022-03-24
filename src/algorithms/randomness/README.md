@@ -9,7 +9,7 @@ is definitely worth reading the
 Integers are uniformly distributed over the range of the type. Floats are uniformly distributed from
 0 (included) to 1 (excluded). Bools have an equal change to be true or false.
 
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./random_values.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./random_basics.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ## Random numbers in a range
@@ -17,7 +17,8 @@ Integers are uniformly distributed over the range of the type. Floats are unifor
 Zig provides functions for generating random integers within a range. Each function has a normal
 and a biased version. The normal version is uniformly distributed, but does not run in constant
 time. The biased version runs in constant time, but is not uniform. For most use cases however,
-the biased versions are uniform enough.
+the biased versions are uniform enough. There are also the 'atMost' variants, which have an
+inclusive upper bound.
 
 For floating point numbers, zig does not provide range functions. However, it is really easy to
 implement one yourself.

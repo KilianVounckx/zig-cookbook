@@ -19,4 +19,14 @@ test "basics" {
     { // boolean
         _ = random.boolean();
     }
+
+    { // enums
+        const Foo = enum {
+            foo,
+            bar,
+            baz,
+        };
+
+        _ = random.enumValue(Foo);
+    }
 }
