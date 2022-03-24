@@ -2,6 +2,10 @@
 
 A collection of [zig](https://www.ziglang.org") samples that demonstrate how to use the standard library. The format is based on [Rust Cookbook](https://rust-lang-nursery.github.io/rust-cookbook/).
 
+## Contents
+
+1. [Randomness](src/randomness/randomness.md)
+
 
 ### Notes
 
