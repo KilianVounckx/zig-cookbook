@@ -14,6 +14,9 @@ zig release. The samples about randomness don't contain proper tests, because th
 random. It uses pseudo random number generators, so in principle, they could be tested. However,
 I felt this didn't add much value.
 
+This repository assumes you have basic knowledge of zig (at least skimmed through the
+[docs](https://www.ziglang.org/documentation/latest)).
+
 ## Contents
 
 - Algorithms
