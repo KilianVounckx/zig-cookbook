@@ -24,3 +24,14 @@ implement one yourself.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./random_range.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## Random distributions
+
+Besides uniform distributions, zig provides normal and exponential distribution functions.
+Normal distributions have a default mean of 0, and standard deviation of 1. To use other mean
+and deviation, multiply by the standard deviation, then add the mean.
+Exponential distributions have default rate parameter of 1. To use a different rate parameter,
+divide by it. For other distributions, you have to provide your own implementation.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./random_distributions.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
