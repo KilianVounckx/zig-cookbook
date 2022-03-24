@@ -9,7 +9,9 @@ This is a comptime known function which takes a value of type context, as well a
 slice element type. It should return false if the the first value has to be in front of the second
 value in the sorted list. The std.sort namespace exports two functions which cover most use cases
 when working with regular numbers. These are asc and desc. Each take a type as an argument, and
-return the comparison function.
+return the comparison function. Besides the normal sort function, there is also insertionSort,
+which always sorts the given slice using the insertion sort algorithm. Most of the times, this
+will be slower, so just using sort is preferred.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sorting.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
@@ -25,4 +27,20 @@ important note is that order is not necessarily preserved. If two coordinates ar
 the context coordinate, their order could be swapped.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./context.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+
+## SortContext
+
+Besides sort and insertionSort, there are sortContext and insertionSortContext. These functions do
+not take a slice. They take a length, and a context. This allows to sort any type. It does not have
+to be a slice. It could be used for sorting a binary tree for example. To keep things simple, this
+sample will sort a slice. The length argument will be the length of the slice in this case. The
+context can be any type. The only requirements is that is has a swap and a lessThan declaration.
+The swap declaration takes two usize integers and swaps the corresponding elements. The lessThan
+declaration also takes two usize integers and returns true if the element corresponding to the first
+index is smaller than the second.
+Note: The context argument in these functions has nothing to do with the context argument in the
+other sorting functions.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./sort_context.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
