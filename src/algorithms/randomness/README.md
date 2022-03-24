@@ -1,4 +1,4 @@
-## Random numbers
+## Basics
 
 Generate random values with the help of random number generators (rng). In zig, you have to be
 specific about which rng to use. There are however good defaults. Rng's in zig use a pattern
@@ -12,7 +12,7 @@ Integers are uniformly distributed over the range of the type. Floats are unifor
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./basics.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
-## Random numbers in a range
+## Numbers in a range
 
 Zig provides functions for generating random integers within a range. Each function has a normal
 and a biased version. The normal version is uniformly distributed, but does not run in constant
@@ -26,7 +26,7 @@ implement one yourself.
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./range.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
-## Random distributions
+## Distributions
 
 Besides uniform distributions, zig provides normal and exponential distribution functions.
 Normal distributions have a default mean of 0, and standard deviation of 1. To use other mean
