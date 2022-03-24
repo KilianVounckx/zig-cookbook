@@ -37,7 +37,7 @@ You can test whether a function returned an error with the expectError function.
 
 ## Approx
 
-Floating point numbers are almost never exact. Too do tests to compare floating point numbers, use
+Floating point numbers are almost never exact. To do tests to compare floating point numbers, use
 expectApproxEqRel and expectApproxEqAbs.
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./fmt.zig) -->
