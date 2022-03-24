@@ -1,6 +1,6 @@
 const testing = @import("std").testing;
 
 test {
-    testing.refAllDecls(@import("algorithms/randomness.zig"));
-    testing.refAllDecls(@import("algorithms/sorting.zig"));
+    _ = @import("algorithms/randomness.zig");
+    _ = @import("algorithms/sorting.zig");
 }

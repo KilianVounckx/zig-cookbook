@@ -1,10 +1,10 @@
 const testing = @import("std").testing;
 
 test {
-    testing.refAllDecls(@import("sorting/sorting.zig"));
-    testing.refAllDecls(@import("sorting/context.zig"));
-    testing.refAllDecls(@import("sorting/sort_context.zig"));
-    testing.refAllDecls(@import("sorting/binary_search.zig"));
-    testing.refAllDecls(@import("sorting/is_sorted.zig"));
-    testing.refAllDecls(@import("sorting/min_max.zig"));
+    _ = @import("sorting/sorting.zig");
+    _ = @import("sorting/context.zig");
+    _ = @import("sorting/sort_context.zig");
+    _ = @import("sorting/binary_search.zig");
+    _ = @import("sorting/is_sorted.zig");
+    _ = @import("sorting/min_max.zig");
 }
