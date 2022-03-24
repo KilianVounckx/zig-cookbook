@@ -68,3 +68,13 @@ is found in the list, the corresponding index is returned. Otherwise, it returns
 
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./binary_search.zig) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
+
+## Min and max
+
+The last functions in the std.sort namespace are min, max, argMin and argMax. All of them take the
+same arguments as the sort functions. Min and max return the smallest and largest item in the
+given slice respectively. ArgMin and argMax return the index corresponding to the smallest and
+largest item respectively. All four of these functions return null if the given slice is empty.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./min_max.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->

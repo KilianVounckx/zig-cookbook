@@ -6,4 +6,5 @@ test {
     testing.refAllDecls(@import("sorting/sort_context.zig"));
     testing.refAllDecls(@import("sorting/binary_search.zig"));
     testing.refAllDecls(@import("sorting/is_sorted.zig"));
+    testing.refAllDecls(@import("sorting/min_max.zig"));
 }
