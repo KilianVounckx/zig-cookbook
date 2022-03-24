@@ -20,3 +20,6 @@ the biased versions are uniform enough.
 
 For floating point numbers, zig does not provide range functions. However, it is really easy to
 implement one yourself.
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./random_range.zig) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
