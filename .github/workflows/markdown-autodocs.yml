@@ -1,2 +1,8 @@
 name: Markdown autodocs
-uses: dineshsonachalam/markdown-autodocs@v1.0.3
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: dineshsonachalam/markdown-autodocs@v1.0.3
+
