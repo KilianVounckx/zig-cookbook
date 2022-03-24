@@ -4,7 +4,7 @@ A collection of [zig](https://www.ziglang.org") samples that demonstrate how to 
 
 ## Contents
 
-1. [Randomness](src/randomness/randomness.md)
+1. [Randomness](src/algorithms/randomness/randomness.md)
 
 
 ### Notes
