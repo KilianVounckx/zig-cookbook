@@ -13,4 +13,5 @@ pub fn main() !void {
     std.debug.print("Random u32: {}\n", .{random.int(u32)});
     std.debug.print("Random i32: {}\n", .{random.int(i32)});
     std.debug.print("Random float: {}\n", .{random.float(f64)});
+    std.debug.print("Random bool: {}\n", .{random.boolean()});
 }
