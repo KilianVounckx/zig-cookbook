@@ -1,5 +1,3 @@
-const testing = @import("std").testing;
-
 test {
     _ = @import("sorting/sorting.zig");
     _ = @import("sorting/context.zig");
