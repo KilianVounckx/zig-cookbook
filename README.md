@@ -28,6 +28,8 @@ This repository assumes you have basic knowledge of zig (at least skimmed throug
 - Algorithms
     - [Randomness](src/algorithms/randomness)
     - [Sorting](src/algorithms/sorting)
+- Data Structures
+    - [Array List](src/datastructures/array_list)
 
 
 ### Notes
