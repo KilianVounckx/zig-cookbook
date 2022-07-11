@@ -33,7 +33,7 @@ This repository assumes you have basic knowledge of zig (at least skimmed throug
 ### Notes
 
 - This repo is far from completed. Arguably it will never be completed, but at the moment, it is
-  almost empty. I try to add a chapter at least a few times a week, but all help is appreciated.
+  almost empty. I try to add a chapter when I have the time, but all help is appreciated.
   Just send a pull request.
 
 - Because the zig standard library is not finalized, and will not be for a while (current focus is
