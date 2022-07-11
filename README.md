@@ -5,7 +5,7 @@ library. The format is based on [Rust Cookbook](https://rust-lang-nursery.github
 
 ## About
 
-This repository contains samples which demonstrate how to use the zig standard libary. The
+This repository contains samples which demonstrate how to use the zig standard library. The
 samples are grouped to make it easier to navigate. I try to keep the repo up-to-date with the latest
 zig release.
 
