@@ -26,7 +26,7 @@ test "context" {
     };
     var context = Coord{ .x = 0, .y = 0 };
 
-    std.sort.sort(Coord, &list, context, comptime Coord.compare);
+    std.sort.sort(Coord, &list, context, Coord.compare);
 
     try std.testing.expectEqualSlices(Coord, &.{
         .{ .x = 1, .y = 2 },
@@ -38,7 +38,7 @@ test "context" {
     }, &list);
 
     context = .{ .x = 5, .y = 5 };
-    std.sort.sort(Coord, &list, context, comptime Coord.compare);
+    std.sort.sort(Coord, &list, context, Coord.compare);
 
     try std.testing.expectEqualSlices(Coord, &.{
         .{ .x = 4, .y = 4 },
