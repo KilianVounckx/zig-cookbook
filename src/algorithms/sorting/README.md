@@ -63,6 +63,9 @@ nothing to do with the context, and everything with the algorithm zig uses to so
 functions asc and desc, you won't notice this however, since only if two variables are the same
 will their order be swapped.
 
+Note: In other (more functional) programming languages, these context variables could be
+encapsulated in closures. Since zig does not have closures, this is impossible.
+
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./context.zig) -->
 <!-- The below code snippet is automatically added from ./context.zig -->
 ```zig
@@ -130,6 +133,7 @@ context can be any type. The only requirements is that is has a swap and a lessT
 The swap declaration takes two usize integers and swaps the corresponding elements. The lessThan
 declaration also takes two usize integers and returns true if the element corresponding to the first
 index is smaller than the second.
+
 Note: The context argument in these functions has nothing to do with the context argument in the
 other sorting functions.
 
